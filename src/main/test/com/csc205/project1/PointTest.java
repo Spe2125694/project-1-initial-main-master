@@ -8,19 +8,28 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * PointTest --- program to test methods from "Point.java".
+ *
+ * @author    Spencer Hankerson
+ */
+
 @ExtendWith(MockitoExtension.class)
 class PointTest {
 
     @Mock
-    Point point;
+    Point origin;   //creates point at (0,0) on cartesian plane
 
+    /*  Tests 'distance' method to ensure
+     *  correct calculations using origin
+     *  and (2,0).   */
     @Test
     void distanceTest() {
-        String expected = "2.0";
-        String actual = new Point(2.0, 0.0).distance(point);
-        assertEquals(expected, actual);
+        double actual = new Point(2.0, 0.0).distance(origin);
+        assertEquals(2.0, actual);
     }
 
+    //  Tests 'shiftX' method by adding 10 to (0,0)
     @Test
     void shiftXTest() {
         Point point = new Point();
@@ -28,6 +37,7 @@ class PointTest {
         assertEquals(10.0, point.getX());
     }
 
+    //  Tests 'shiftY' method by adding 10 to (0,0)
     @Test
     void shiftYTest() {
         Point point = new Point();
@@ -35,6 +45,8 @@ class PointTest {
         assertEquals(8.0, point.getY());
     }
 
+    /*  Tests 'rotate' method by rotating (0, 5)
+        90 degrees which returns (-y, x) */
     @Test
     void rotateTest() {
         Point point = new Point(0.0, 5.0);
